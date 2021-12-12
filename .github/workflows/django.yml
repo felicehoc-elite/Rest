@@ -23,7 +23,7 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
           script: |
             cd /home
-            git clone https://github.com/VictorKudrin/rest.git
+            git pull
       #- name: Deployed successfully
         #run: |
           #import os
