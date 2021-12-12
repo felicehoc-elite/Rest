@@ -1,0 +1,38 @@
+name: Django
+on:
+  # Triggers the workflow on push request events but only for the main branch
+  push:
+    branches: [ rest ]
+jobs:
+  deploy:
+    name: Deployment
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Fetch history, because Heroku deploy fails otherwise.
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}} 
+          username: ${{secrets.SSH_USERNAME}}
+          script: |
+            cd /home
+            git clone https://github.com/VictorKudrin/rest.git
+      #- name: Deployed successfully
+        #run: |
+          #import os
+          #print(os.environ['PATH'])
+          #cd work/rework
+        #shell: python
+      #- name: Test with pytest
+       # run: |
+       #   python3 -m venv venv
+        ##  .venv/bin/activate
+        #  .venv/bin/activate
+         ## python manage.py test
