@@ -24,6 +24,9 @@ jobs:
           script: |
             cd /home
             git pull
+            cd api
+            python3 -m venv venv
+            . venv/bin/activate
       #- name: Deployed successfully
         #run: |
           #import os
