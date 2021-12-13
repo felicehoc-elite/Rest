@@ -26,7 +26,7 @@ jobs:
             git pull
             python3 -m venv venv
             . venv/bin/activate
-            cd api
+            cd rest/api
             python3 manage.py migrate
             python3 manage.py runserver
       #- name: Deployed successfully
