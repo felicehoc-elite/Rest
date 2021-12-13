@@ -22,9 +22,9 @@ jobs:
           key: ${{secrets.SSH_KEY}} 
           username: ${{secrets.SSH_USERNAME}}
           script: |
-            cd /home
+            cd /home/rest
             git pull
-            cd rest/api
+            cd api
             . venv/bin/activate
             python3 manage.py runserver
       #- name: Deployed successfully
