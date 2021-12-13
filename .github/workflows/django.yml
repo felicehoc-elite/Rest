@@ -24,20 +24,14 @@ jobs:
           script: |
             cd /home
             git pull
-            cd api
             python3 -m venv venv
             . venv/bin/activate
-            python manage.py migrate
-            python manage.py runserver
+            cd api
+            python3 manage.py migrate
+            python3 manage.py runserver
       #- name: Deployed successfully
         #run: |
           #import os
           #print(os.environ['PATH'])
           #cd work/rework
         #shell: python
-      #- name: Test with pytest
-       # run: |
-       #   python3 -m venv venv
-        ##  .venv/bin/activate
-        #  .venv/bin/activate
-         ## python manage.py test
